@@ -1,0 +1,15 @@
+{
+  "name": "Kislaynath Tracker",
+  "short_name": "Tracker",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/bMdNdFyn/IMG-20251027-214623-377.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
