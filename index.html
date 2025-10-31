@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>KISLAYNATH 2026 SSC GD MASTER PLAN</title>
+
+<!-- PWA & iOS meta -->
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KISLAYNATH Tracker">
+<link rel="apple-touch-icon" href="https://i.ibb.co/bMdNdFyn/IMG-20251027-214623-377.webp">
+<meta name="theme-color" content="#00ffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="KTracker">
+
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("service-worker.js")
+  .then(()=>console.log("Service Worker Registered"))
+  .catch(()=>console.log("Service Worker failed"));
+}
+</script>
+
+<style>
+/* Styles: dark neon theme */
+body{background:#000;color:#fff;font-family:'Poppins',sans-serif;margin:0;padding:0;text-align:center;}
+@keyframes neonPulse{0%{box-shadow:0 0 5px #00ffff,0 0 10px #00ffff;}50%{box-shadow:0 0 20px #00ffff,0 0 30px #00ffff;}100%{box-shadow:0 0 5px #00ffff,0 0 10px #00ffff;}}
+@keyframes clickFlash{0%{box-shadow:0 0 25px 10px #ffffff44;}100%{box-shadow:0 0 5px 0px transparent;}}
+@keyframes loadGlow{0%{width:0%;opacity:1;}80%{width:100%;opacity:1;}100%{width:100%;opacity:0;}}
+#profile-header img{width:130px;height:130px;border-radius:50%;border:2px solid #00ffff;object-fit:cover;margin:40px auto 10px;animation:neonPulse 2s infinite;}
+#profile-header h2{color:#00ffff;margin:6px 0 20px;font-weight:700;letter-spacing:1px;font-size:18px;}
+.download-btn{position:relative;background:transparent;color:#00ffff;padding:12px 28px;border:2px solid #00ffff;border-radius:8px;font-weight:700;text-decoration:none;letter-spacing:0.5px;transition:0.3s;animation:neonPulse 2s infinite;display:inline-block;}
+.download-btn:hover{background:#00ffff;color:#000;transform:scale(1.05);}
+.download-btn.clicked{animation:clickFlash 1s;}
+#loadBar{height:4px;width:0;background:#00ffff;margin:12px auto 0;border-radius:4px;box-shadow:0 0 10px #00ffff;transition:width 2s linear;opacity:0;}
+.plan-tabs{width:95%;max-width:900px;margin:40px auto;text-align:left;}
+.tab-buttons{text-align:center;margin-bottom:20px;flex-wrap:wrap;}
+.tab-btn{background:#111;color:#00ffff;border:1px solid #00ffff;padding:10px 16px;margin:4px;border-radius:6px;cursor:pointer;transition:0.3s;display:inline-block;}
+.tab-btn.active,.tab-btn:hover{background:#00ffff;color:#000;}
+.tab-content{display:none;border:1px solid #00ffff;padding:20px;border-radius:10px;background:#050505;box-shadow:0 0 10px #00ffff;margin-bottom:20px;}
+.tab-content.active{display:block;}
+ul{padding-left:18px;line-height:1.6;font-size:15px;}
+p{font-size:15px;line-height:1.6;}
+/* calendar improvements */
+#calendar table{width:100%;border-collapse:collapse;color:#fff;}
+#calendar td{vertical-align:top;padding:6px;border:1px solid #00ffff;background:#070707;}
+@media (max-width:420px){ #profile-header img{width:110px;height:110px;} .tab-content{padding:14px;} .download-btn{padding:10px 18px;} }
+</style>
+</head>
+<footer style="
+  text-align:center;
+  margin-top:60px;
+  padding:10px 0 20px 0;
+  border-top:1px solid #00ffff;
+  color:#00ffff;
+  font-size:14px;
+  letter-spacing:0.5px;
+  background:transparent;
+">
+  <p style="margin:5px 0;animation:glow 2s ease-in-out infinite alternate;">
+    ⚡ NO EXCUSES • NO RETRIES • JUST RESULTS ⚡
+  </p>
+  <p style="margin:0;font-size:13px;color:#00cccc;">
+    Designed & Maintained by <b>TIWARI KISHLAYNATH SHAILENDRAKUMAR</b>
+  </p>
+</footer>
+
+<style>
+@keyframes glow {
+  from { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; }
+  to { text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff; }
+}
+</style>
+<body>
+
+<section id="profile-header">
+  <img src="https://i.ibb.co/bMdNdFyn/IMG-20251027-214623-377.webp" alt="Profile Photo">
+  <h2>TIWARI KISHLAYNATH SHAILENDRAKUMAR</h2>
+  <a href="./Kislaynath_Plan.pdf" download class="download-btn" id="downloadBtn">
+    🔽 Download KISLAYNATH MASTER PLAN (PDF)
+  </a>
+  <div id="loadBar"></div>
+</section>
+
+<div class="plan-tabs">
+  <div class="tab-buttons">
+    <button class="tab-btn active" data-tab="pet">PET 5 KM</button>
+    <button class="tab-btn" data-tab="core">CORE</button>
+    <button class="tab-btn" data-tab="diet">DIET / RECOVERY</button>
+    <button class="tab-btn" data-tab="cbt">CBT 1 WEEK</button>
+    <button class="tab-btn" data-tab="tracker">TRACKER</button>
+  </div>
+
+  <div class="tab-content active" id="pet">
+    <p><strong>Goal:</strong> Complete 5 km under 24 minutes.</p>
+    <ul>
+      <li>Week 1 – Base & Technique (3 km easy, hill sprints, tempo 4 km)</li>
+      <li>Week 2 – Speed Endurance (8×400 m pace, 4.5 km tempo)</li>
+      <li>Week 3 – Performance (5 km timed, hill sprints)</li>
+      <li>Week 4 – Taper (3 km easy, 5 km trial, rest)</li>
+    </ul>
+  </div>
+
+  <div class="tab-content" id="core">
+    <ul>
+      <li>Plank – 3×45s | Side Plank – 3×30s/side</li>
+      <li>Leg Raises – 3×15 | Bicycle Crunch – 3×20</li>
+      <li>Superman Hold – 3×30s | Flutter Kicks – 3×30s</li>
+      <li>Bridge – 3×20 | Bonus: Mountain Climbers, Plank-Push Ups</li>
+    </ul>
+  </div>
+
+  <div class="tab-content" id="diet">
+    <ul>
+      <li>Morning – Empty stomach run, water/black coffee</li>
+      <li>Post-run – Banana + protein + lemon water</li>
+      <li>Lunch – Dal/paneer/egg + roti + veggies</li>
+      <li>Night – Light dinner + 7 hr sleep + stretching</li>
+    </ul>
+  </div>
+
+  <div class="tab-content" id="cbt">
+    <p>1-week crash plan: Mon–GK, Tue–Reasoning, Wed–Maths, Thu–CA, Fri–Mock, Sat–Weak Area, Sun–Final Mock.</p>
+  </div>
+
+  <!-- TRACKER: calendar + progress bar (full code included) -->
+  <div class="tab-content" id="tracker">
+    <h3>Daily Progress Tracker ✅</h3>
+    <p>Mark what you finish today. Each date locks at midnight.</p>
+    <div id="calendar"></div>
+    <div id="progressSummary" style="margin-top:15px;text-align:center;">
+      <div style="background:#111;border:1px solid #00ffff;height:10px;width:90%;margin:0 auto;border-radius:5px;overflow:hidden;">
+        <div id="progressBar" style="background:#00ffff;height:100%;width:0%;transition:width 0.5s;"></div>
+      </div>
+      <p id="progressText" style="color:#00ffff;margin-top:6px;font-size:14px;">0% Complete</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* download button animation */
+const btn=document.getElementById("downloadBtn");
+const bar=document.getElementById("loadBar");
+btn.addEventListener("click",()=>{
+  btn.classList.add("clicked");
+  bar.style.animation="loadGlow 2s forwards";
+  setTimeout(()=>{btn.classList.remove("clicked");bar.style.opacity=0;bar.style.width=0;},2000);
+});
+
+/* tabs */
+const buttons=document.querySelectorAll('.tab-btn');
+const contents=document.querySelectorAll('.tab-content');
+buttons.forEach(b=>{
+  b.addEventListener('click',()=>{
+    buttons.forEach(x=>x.classList.remove('active'));
+    contents.forEach(c=>c.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById(b.dataset.tab).classList.add('active');
+    if(b.dataset.tab==='tracker') renderCalendar();
+  });
+});
+
+/* Tracker calendar + persistence + progress */
+function renderCalendar(){
+  const today=new Date();
+  const month=today.getMonth();
+  const year=today.getFullYear();
+  const firstDay=new Date(year,month,1).getDay();
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  let html='<table id="calTable">';
+  html+='<tr><th colspan="7" style="color:#00ffff;padding:6px;">'+today.toLocaleString('default',{month:'long'})+' '+year+'</th></tr>';
+  html+='<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>';
+  let dayCount=0,completed=0,total=0;
+  for(let i=0;i<firstDay;i++){html+='<td></td>';dayCount++;}
+  for(let d=1;d<=daysInMonth;d++){
+    const dateKey=`${year}-${month+1}-${d}`;
+    const stored=JSON.parse(localStorage.getItem('progress-'+dateKey)||'{}');
+    const locked=new Date(year,month,d) < new Date(year,month,today.getDate());
+    html+=`<td style="padding:6px;border:1px solid #00ffff;background:#070707;">
+      <div style="font-weight:600;">${d}</div>
+      <label style="display:block"><input type="checkbox" ${stored.pet?'checked':''} ${locked?'disabled':''}
+        onchange="saveProgress('${dateKey}','pet',this.checked)"> PET</label>
+      <label style="display:block"><input type="checkbox" ${stored.core?'checked':''} ${locked?'disabled':''}
+        onchange="saveProgress('${dateKey}','core',this.checked)"> CORE</label>
+      <label style="display:block"><input type="checkbox" ${stored.cbt?'checked':''} ${locked?'disabled':''}
+        onchange="saveProgress('${dateKey}','cbt',this.checked)"> CBT</label>
+    </td>`;
+    if(stored.pet) completed++;
+    if(stored.core) completed++;
+    if(stored.cbt) completed++;
+    total+=3;
+    dayCount++;
+    if(dayCount%7==0)html+='</tr><tr>';
+  }
+  html+='</tr></table>';
+  document.getElementById('calendar').innerHTML=html;
+  updateProgress(completed,total);
+}
+function saveProgress(dateKey,type,val){
+  const record=JSON.parse(localStorage.getItem('progress-'+dateKey)||'{}');
+  record[type]=val;
+  localStorage.setItem('progress-'+dateKey,JSON.stringify(record));
+  renderCalendar();
+}
+function updateProgress(done,total){
+  const pct=Math.round((done/total)*100)||0;
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('progressText').innerText=pct+'% Complete';
+}
+document.addEventListener('DOMContentLoaded',()=>{ if(document.querySelector('.tab-btn.active').dataset.tab==='tracker') renderCalendar(); });
+</script>
+</body>
+</html>
